@@ -2,7 +2,7 @@
 
 Project done during **Full Stack Software Engineering** at **ALX**. It aims to learn about how to design a Web Infrastructure.
 
-## Key concepts
+## Key concepts.
 * Network basics
 * Server
 * Web server
