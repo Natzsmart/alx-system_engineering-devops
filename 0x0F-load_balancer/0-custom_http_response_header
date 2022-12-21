@@ -8,8 +8,13 @@ sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 sudo mkdir -p /var/www/html /var/www/error
 sudo chmod -R 755 /var/www
+<<<<<<< HEAD
 echo 'Hello World!' | tee /var/www/html/index.html
 echo "Ceci n'est pas une page" | tee /var/www/html/404.html
+=======
+echo 'Hello World!' > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+>>>>>>> 5627c38a23503015fc6a32ff94889c46e92a002a
 server_config=\
 "server {
 	listen 80 default_server;
@@ -30,5 +35,9 @@ server_config=\
 	}
 }"
 
+<<<<<<< HEAD
 echo "$server_config" | tee /etc/nginx/sites-enabled/default
+=======
+echo "$server_config" > /etc/nginx/sites-enabled/default
+>>>>>>> 5627c38a23503015fc6a32ff94889c46e92a002a
 sudo service nginx restart
