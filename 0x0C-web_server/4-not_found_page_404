@@ -4,10 +4,8 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo chown -R "$USER":"$USER" /var/www
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.twitter.com permanent;' /etc/nginx/sites-available/default
-sudo mkdir -p /var/www/error
-echo "Ceci n'est pas une page" | sudo tee /var/www/error/404.html
-sudo sed -i '/server_name _/a error_page 404 /404.html; location = /404.html {root /var/www/error/;internal; }' /etc/nginx/sites-available/default
-sudo service nginx start
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.twitter.com permanent;' /etc/nginx/sites-enabled/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
